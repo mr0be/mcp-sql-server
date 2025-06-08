@@ -103,7 +103,7 @@ server.tool("query", { sql: z.string() }, async ({ sql }) => {
 server.tool("tableInfo", { tableName: z.string() }, async ({ tableName }) => {
   const db = await Db.init(dbConfig);
   try {
-    return db.getTableInfo(tableName);
+    return await db.getTableInfo(tableName);
   } catch (err) {
     return {
       content: [{ type: "text", text: `Error: ${(err as Error).message}` }],
